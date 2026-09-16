@@ -1,7 +1,4 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-Route::fallback(function () {
-    return response()->file(public_path('index.html'));
-});
+// No web routes: this backend is API-only. HTTP 404s for api/* are
+// handled as JSON in bootstrap/app.php.
