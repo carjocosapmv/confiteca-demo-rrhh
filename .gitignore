@@ -1,0 +1,25 @@
+# Frontend
+node_modules/
+dist/
+*.local
+
+# Laravel backend
+backend/vendor/
+backend/node_modules/
+backend/.env
+backend/database/database.sqlite
+backend/storage/framework/cache/data/
+backend/storage/framework/sessions/
+backend/storage/framework/views/
+backend/storage/logs/
+backend/bootstrap/cache/*.php
+backend/public/hot
+backend/public/storage
+backend/public/assets/
+backend/storage/app/public/
+
+# IDE
+.idea/
+*.swp
+*.swo
+.DS_Store
