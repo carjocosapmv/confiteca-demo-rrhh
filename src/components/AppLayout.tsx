@@ -7,6 +7,7 @@ import { Bell } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { get } from '@/lib/api-client';
 import { useAuth } from '@/contexts/AuthContext';
+import { TourProvider } from '@/contexts/TourContext';
 
 export default function AppLayout() {
   const navigate = useNavigate();
@@ -25,25 +26,38 @@ export default function AppLayout() {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full relative">
-        <AppSidebar />
-        <div className="flex-1 flex flex-col min-w-0">
-          <header className="h-14 flex items-center justify-between border-b border-border px-4 bg-card">
-            <SidebarTrigger className="text-muted-foreground hover:text-foreground" />
-            <Button variant="ghost" size="icon" className="relative" onClick={() => navigate('/vacaciones/notificaciones')}>
-              <Bell className="h-5 w-5" />
-              {unreadCount > 0 && (
-                <Badge className="absolute -top-1 -right-1 h-4 min-w-4 px-1 text-[9px] bg-primary text-primary-foreground rounded-full">
-                  {unreadCount > 99 ? '99+' : unreadCount}
-                </Badge>
-              )}
-            </Button>
-          </header>
-          <main className="flex-1 p-6 overflow-auto">
-            <Outlet />
-          </main>
+      {/* TourProvider must sit inside SidebarProvider: it uses useSidebar() to
+          expand the sidebar before highlighting a navigation step. */}
+      <TourProvider>
+        <div className="min-h-screen flex w-full relative">
+          <AppSidebar />
+          <div className="flex-1 flex flex-col min-w-0">
+            <header className="h-14 flex items-center justify-between border-b border-border px-4 bg-card">
+              <SidebarTrigger
+                data-tour="chrome:sidebar-trigger"
+                className="text-muted-foreground hover:text-foreground"
+              />
+              <Button
+                data-tour="chrome:notifications"
+                variant="ghost"
+                size="icon"
+                className="relative"
+                onClick={() => navigate('/vacaciones/notificaciones')}
+              >
+                <Bell className="h-5 w-5" />
+                {unreadCount > 0 && (
+                  <Badge className="absolute -top-1 -right-1 h-4 min-w-4 px-1 text-[9px] bg-primary text-primary-foreground rounded-full">
+                    {unreadCount > 99 ? '99+' : unreadCount}
+                  </Badge>
+                )}
+              </Button>
+            </header>
+            <main className="flex-1 p-6 overflow-auto">
+              <Outlet />
+            </main>
+          </div>
         </div>
-      </div>
+      </TourProvider>
     </SidebarProvider>
   );
 }

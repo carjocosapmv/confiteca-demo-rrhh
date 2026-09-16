@@ -24,3 +24,6 @@ backend/storage/app/public/
 *.swo
 .DS_Store
 .vercel
+
+# Agent tooling (local cache)
+.atl/

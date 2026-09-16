@@ -71,7 +71,7 @@ function MenuGroup({ label, items, badgeCounts }: { label: string; items: MenuIt
   if (visibleItems.length === 0) return null;
 
   return (
-    <SidebarGroup>
+    <SidebarGroup data-tour={`navgroup:${label}`}>
       <SidebarGroupLabel className="text-sidebar-muted text-[10px] tracking-[0.1em] uppercase font-semibold">
         {label}
       </SidebarGroupLabel>
@@ -84,6 +84,7 @@ function MenuGroup({ label, items, badgeCounts }: { label: string; items: MenuIt
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
                   <NavLink
+                    data-tour={`nav:${item.url}`}
                     to={item.url}
                     end
                     className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors ${
