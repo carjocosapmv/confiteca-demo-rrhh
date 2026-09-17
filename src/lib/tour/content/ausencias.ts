@@ -14,7 +14,7 @@ export const ausenciasSection: GuideSection = {
       title: 'Inicio de Ausencias',
       summary: 'El resumen de tu situación: saldo de días disponibles y solicitudes en curso.',
       details: [
-        'Es la portada del módulo. Muestra cuántos días de vacaciones tenés disponibles, cuántos ya usaste y qué solicitudes siguen esperando respuesta.',
+        'Es la portada del módulo. Muestra cuántos días de vacaciones tienes disponibles, cuántos ya usaste y qué solicitudes siguen esperando respuesta.',
         'La usa todo colaborador antes de pedir vacaciones, para confirmar el saldo con el que cuenta y evitar pedidos que serían rechazados por falta de días.',
       ],
       anchor: 'nav:/vacaciones',
@@ -25,9 +25,9 @@ export const ausenciasSection: GuideSection = {
     {
       id: 'nueva-solicitud',
       title: 'Nueva Solicitud',
-      summary: 'El formulario para pedir vacaciones o un permiso: elegís fechas, tipo y motivo.',
+      summary: 'El formulario para pedir vacaciones o un permiso: eliges fechas, tipo y motivo.',
       details: [
-        'Acá se origina todo el circuito. Seleccionás el rango de fechas, el tipo de ausencia y el motivo; el sistema calcula los días hábiles involucrados y valida que tengas saldo suficiente.',
+        'Acá se origina todo el circuito. Seleccionas el rango de fechas, el tipo de ausencia y el motivo; el sistema calcula los días hábiles involucrados y valida que tengas saldo suficiente.',
         'Al enviarla, la solicitud queda en estado pendiente y se notifica automáticamente a quien debe aprobarla. No hace falta avisar por correo.',
       ],
       anchor: 'nav:/vacaciones/nueva',
@@ -95,7 +95,7 @@ export const ausenciasSection: GuideSection = {
       summary: 'Los días disponibles surgen de lo acumulado por antigüedad menos lo ya gozado o aprobado.',
       details: [
         'El saldo que ves no es un número cargado a mano: se calcula como los días que te corresponden por antigüedad, menos los días ya gozados y menos los que están comprometidos en solicitudes aprobadas a futuro.',
-        'Por eso el saldo baja apenas se aprueba una solicitud, aunque las fechas todavía no hayan llegado. Si notás una diferencia con tu propio cálculo, lo habitual es que haya una solicitud aprobada pendiente de gozar.',
+        'Por eso el saldo baja apenas se aprueba una solicitud, aunque las fechas todavía no hayan llegado. Si notas una diferencia con tu propio cálculo, lo habitual es que haya una solicitud aprobada pendiente de gozar.',
       ],
       moduleKey: 'vacaciones',
     },

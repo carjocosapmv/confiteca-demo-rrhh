@@ -65,7 +65,7 @@ export function FirstRunTourPrompt() {
         <DialogHeader>
           <DialogTitle>¿Te mostramos el portal?</DialogTitle>
           <DialogDescription>
-            Un recorrido de un minuto por el menú y las secciones principales. Podés salir
+            Un recorrido de un minuto por el menú y las secciones principales. Puedes salir
             en cualquier momento y volver a verlo desde el botón de ayuda.
           </DialogDescription>
         </DialogHeader>

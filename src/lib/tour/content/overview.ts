@@ -8,18 +8,18 @@ import type { GuideSection } from './types';
 export const overviewSection: GuideSection = {
   id: 'overview',
   label: 'Recorrido general',
-  description: 'Conocé la navegación y las secciones principales del portal.',
+  description: 'Conoce la navegación y las secciones principales del portal.',
   topics: [
     {
       id: 'bienvenida',
       title: 'Bienvenido al portal de Talento Humano',
       summary:
-        'En un minuto te mostramos cómo moverte por el sistema. Podés salir cuando quieras con la tecla Escape.',
+        'En un minuto te mostramos cómo moverte por el sistema. Puedes salir cuando quieras con la tecla Escape.',
       details: [
         'El portal de Talento Humano reúne en un solo lugar los trámites y la información que antes vivían repartidos entre correos, planillas y llamadas a Recursos Humanos.',
         'La pantalla se divide en dos zonas: el menú lateral izquierdo, que agrupa todas las secciones disponibles, y el área de trabajo a la derecha, donde se abre la sección que elijas.',
-        'El menú lateral es el índice del portal y se puede contraer para dejar solo los íconos cuando necesitás pantalla completa, por ejemplo al revisar un calendario o una tabla ancha.',
-        'Las secciones que ves en el menú dependen de tu rol. Si un compañero ve una opción que vos no tenés, es porque su perfil incluye permisos sobre ese módulo.',
+        'El menú lateral es el índice del portal y se puede contraer para dejar solo los íconos cuando necesitas pantalla completa, por ejemplo al revisar un calendario o una tabla ancha.',
+        'Las secciones que ves en el menú dependen de tu rol. Si un compañero ve una opción que tú no tienes, es porque su perfil incluye permisos sobre ese módulo.',
       ],
       anchor: 'chrome:sidebar-trigger',
       placement: 'bottom',
@@ -40,7 +40,7 @@ export const overviewSection: GuideSection = {
     {
       id: 'grupo-ausencias',
       title: 'Ausencias',
-      summary: 'Solicitá vacaciones, revisá el estado de tus pedidos y consultá el calendario del equipo.',
+      summary: 'Solicita vacaciones, revisa el estado de tus pedidos y consulta el calendario del equipo.',
       details: [
         'Ausencias cubre el ciclo completo de vacaciones y permisos: pedir, aprobar y consultar.',
         'Todo colaborador usa este grupo. Los jefes y el equipo de Talento Humano suman además la vista de aprobación y el tablero de Recursos Humanos.',
@@ -91,10 +91,10 @@ export const overviewSection: GuideSection = {
     {
       id: 'notificaciones',
       title: 'Notificaciones',
-      summary: 'El indicador muestra cuántas novedades tenés sin leer. Hacé clic para verlas todas.',
+      summary: 'El indicador muestra cuántas novedades tienes sin leer. Haz clic para verlas todas.',
       details: [
         'La campana del encabezado te acompaña en todas las pantallas y se actualiza sola cada pocos segundos.',
-        'El número rojo cuenta los avisos sin leer. Al hacer clic se abre el listado completo, donde podés marcarlos como leídos.',
+        'El número rojo cuenta los avisos sin leer. Al hacer clic se abre el listado completo, donde puedes marcarlos como leídos.',
       ],
       anchor: 'chrome:notifications',
       placement: 'bottom',
@@ -104,10 +104,10 @@ export const overviewSection: GuideSection = {
       id: 'ayuda',
       title: 'Ayuda y recorridos',
       summary:
-        'Desde acá podés repetir este recorrido cuando quieras o lanzar el de una sección puntual.',
+        'Desde acá puedes repetir este recorrido cuando quieras o lanzar el de una sección puntual.',
       details: [
-        'El botón de ayuda abre el menú de recorridos guiados. Lista solo los recorridos de las secciones a las que tenés acceso, así que lo que ves ahí es exactamente lo que podés usar.',
-        'La opción "Reiniciar recorridos" borra la marca de visto de todos los recorridos: útil si querés volver a verlos desde cero o si acompañás a un compañero que recién ingresa.',
+        'El botón de ayuda abre el menú de recorridos guiados. Lista solo los recorridos de las secciones a las que tienes acceso, así que lo que ves ahí es exactamente lo que puedes usar.',
+        'La opción "Reiniciar recorridos" borra la marca de visto de todos los recorridos: útil si quieres volver a verlos desde cero o si acompañas a un compañero que recién ingresa.',
       ],
       anchor: 'chrome:help',
       placement: 'bottom',

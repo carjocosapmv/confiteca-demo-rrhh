@@ -5,7 +5,7 @@ import type { GuideSection, GuideTopic } from './types';
 const anchored: GuideTopic = {
   id: 'nueva-solicitud',
   title: 'Nueva Solicitud',
-  summary: 'Cargá una solicitud de vacaciones en pocos pasos.',
+  summary: 'Carga una solicitud de vacaciones en pocos pasos.',
   details: ['Párrafo largo para la guía escrita.'],
   anchor: 'nav:/vacaciones/nueva',
   route: '/vacaciones/nueva',
@@ -28,7 +28,7 @@ describe('topicToStep', () => {
       id: 'nueva-solicitud',
       target: '[data-tour="nav:/vacaciones/nueva"]',
       title: 'Nueva Solicitud',
-      body: 'Cargá una solicitud de vacaciones en pocos pasos.',
+      body: 'Carga una solicitud de vacaciones en pocos pasos.',
       route: '/vacaciones/nueva',
       moduleKey: 'vacaciones',
       placement: 'right',
