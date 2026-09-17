@@ -29,6 +29,9 @@ import InduccionTH from "@/pages/induccion/InduccionTH";
 import DescriptivosPage from "@/pages/descriptivos/DescriptivosPage";
 import RotacionDashboard from "@/pages/rotacion/RotacionDashboard";
 import NominaPage from "@/pages/nomina/NominaPage";
+import MiNominaPage from "@/pages/nomina/MiNominaPage";
+import MisSolicitudesPage from "@/pages/solicitudes/MisSolicitudesPage";
+import SolicitudesRRHHPage from "@/pages/solicitudes/SolicitudesRRHHPage";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -85,6 +88,16 @@ function ProtectedRoutes() {
           <Route path="/descriptivos" element={<ProtectedModule moduleKey="vacantes"><DescriptivosPage /></ProtectedModule>} />
           <Route path="/rotacion" element={<ProtectedModule moduleKey="rotacion"><RotacionDashboard /></ProtectedModule>} />
           <Route path="/nomina" element={<ProtectedModule moduleKey="nomina"><NominaPage /></ProtectedModule>} />
+
+          {/*
+            Autoservicio: sin ProtectedModule a propósito.
+            Ver lo propio no es un permiso de módulo, es consecuencia de estar
+            autenticado. El servidor deriva el usuario de la sesión, así que no
+            hay nada que estas rutas puedan revelar de otra persona.
+          */}
+          <Route path="/mi-nomina" element={<MiNominaPage />} />
+          <Route path="/mis-solicitudes" element={<MisSolicitudesPage />} />
+          <Route path="/solicitudes/rrhh" element={<SolicitudesRRHHPage />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

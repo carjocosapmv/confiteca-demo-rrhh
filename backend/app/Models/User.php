@@ -116,6 +116,12 @@ class User extends Authenticatable
         return $this->hasMany(Notification::class);
     }
 
+    /** Solicitudes genéricas enviadas a Talento Humano. */
+    public function employeeRequests(): HasMany
+    {
+        return $this->hasMany(EmployeeRequest::class);
+    }
+
     public function onboardingProgress(): HasMany
     {
         return $this->hasMany(OnboardingProgress::class);

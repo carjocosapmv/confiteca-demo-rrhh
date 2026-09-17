@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\PuestoController;
 use App\Http\Controllers\Api\RemoteWorkBalanceController;
 use App\Http\Controllers\Api\RolePermissionController;
 use App\Http\Controllers\Api\RotacionController;
+use App\Http\Controllers\Api\SolicitudColaboradorController;
 use App\Http\Controllers\Api\VacationBalanceController;
 use App\Http\Controllers\Api\PermisoVacacionController;
 use App\Http\Controllers\Api\RequisicionPersonalController;
@@ -121,6 +122,21 @@ Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
         Route::get('/riesgo', [RotacionController::class, 'riesgo']);
         Route::get('/dimension/{dimension}', [RotacionController::class, 'dimension']);
     });
+
+    // Autoservicio del colaborador.
+    //
+    // Fuera de `permission:nomina` a propósito: estas rutas no reciben a quién
+    // consultar, lo derivan de la sesión. El módulo `nomina` protege los datos
+    // AJENOS; el propio desglose no es un privilegio de módulo.
+    Route::get('/nomina/mi-nomina', [NominaController::class, 'miNomina']);
+
+    // Solicitudes genéricas del personal hacia Talento Humano.
+    Route::get('/solicitudes', [SolicitudColaboradorController::class, 'index']);
+    Route::post('/solicitudes', [SolicitudColaboradorController::class, 'store']);
+    Route::get('/solicitudes/todas', [SolicitudColaboradorController::class, 'todas']);
+    Route::get('/solicitudes/{employee_request}', [SolicitudColaboradorController::class, 'show']);
+    Route::post('/solicitudes/{employee_request}/aprobar', [SolicitudColaboradorController::class, 'aprobar']);
+    Route::post('/solicitudes/{employee_request}/rechazar', [SolicitudColaboradorController::class, 'rechazar']);
 
     // Nómina — calculadora de estimados (solo lectura).
     //

@@ -1,7 +1,8 @@
 import {
   LayoutDashboard, BarChart3, ShieldCheck, LogOut,
   CalendarDays, Plus, FileText, Bell, Settings, KeyRound,
-  Users2, ClipboardCheck, UserPlus, Play, GraduationCap, UserCheck, Building2, TrendingDown, Calculator
+  Users2, ClipboardCheck, UserPlus, Play, GraduationCap, UserCheck, Building2, TrendingDown, Calculator,
+  Wallet, Inbox, MessageSquarePlus
 } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';
 import { useLocation } from 'react-router-dom';
@@ -51,6 +52,19 @@ const analiticaItems: MenuItem[] = [
 // admin/superadmin, por lo que el grupo desaparece para los demás roles.
 const nominaItems: MenuItem[] = [
   { title: 'Nómina', url: '/nomina', icon: Calculator, moduleKey: 'nomina' },
+];
+
+// Autoservicio: sin moduleKey a propósito. Estas pantallas solo muestran los
+// datos de quien las abre, así que están disponibles para todo rol autenticado.
+const autoservicioItems: MenuItem[] = [
+  { title: 'Mi Nómina', url: '/mi-nomina', icon: Wallet },
+  { title: 'Mis Solicitudes', url: '/mis-solicitudes', icon: MessageSquarePlus },
+];
+
+// Bandeja de Talento Humano para las solicitudes genéricas. Se muestra con el
+// mismo criterio que la resuelve en el servidor: rol admin o superadmin.
+const solicitudesAdminItems: MenuItem[] = [
+  { title: 'Solicitudes del personal', url: '/solicitudes/rrhh', icon: Inbox },
 ];
 
 const talentoItems: MenuItem[] = [
@@ -119,7 +133,7 @@ function MenuGroup({ label, items, badgeCounts }: { label: string; items: MenuIt
 export function AppSidebar() {
   const { state } = useSidebar();
   const collapsed = state === 'collapsed';
-  const { profile, signOut, role } = useAuth();
+  const { profile, signOut, role, isAdmin } = useAuth();
   const { canView } = usePermissions();
 
   const { data: unreadData } = useQuery({
@@ -145,11 +159,13 @@ export function AppSidebar() {
       </div>
       <SidebarContent>
         <MenuGroup label="General" items={mainItems} badgeCounts={{ Notificaciones: unreadCount }} />
+        <MenuGroup label="Autoservicio" items={autoservicioItems} />
         <MenuGroup label="Ausencias" items={vacacionesItems} />
         {(canView('vacaciones')) && <MenuGroup label="Ausencias Admin" items={vacacionesAdminItems} />}
         <MenuGroup label="Analítica" items={analiticaItems} />
         <MenuGroup label="Talento" items={talentoItems} />
         <MenuGroup label="Nómina" items={nominaItems} />
+        {isAdmin && <MenuGroup label="Talento Humano" items={solicitudesAdminItems} />}
         <MenuGroup label="Administración" items={adminItems} />
       </SidebarContent>
       <div className="mt-auto p-4 border-t border-sidebar-border">

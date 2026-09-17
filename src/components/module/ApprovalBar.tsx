@@ -79,8 +79,8 @@ export function ApprovalBar({
             </DialogTitle>
             <DialogDescription>
               {dialog === 'reject'
-                ? 'Indicá el motivo del rechazo. Queda registrado y se notifica al solicitante.'
-                : 'Podés dejar un comentario opcional.'}
+                ? 'Indica el motivo del rechazo. Queda registrado y se notifica al solicitante.'
+                : 'Puedes dejar un comentario opcional.'}
             </DialogDescription>
           </DialogHeader>
 

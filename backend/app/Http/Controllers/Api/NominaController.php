@@ -63,6 +63,39 @@ class NominaController extends Controller
         ]);
     }
 
+    /**
+     * Autoservicio: el desglose del usuario AUTENTICADO y de nadie más.
+     *
+     * Esta es la única ruta de nómina abierta a todos los roles, y lo es porque
+     * no recibe a quién consultar: el identificador sale de la sesión. No hay
+     * parámetro que aceptar ni validar, que es exactamente el punto — mientras
+     * `detalle()` vive detrás de `permission:nomina` porque cualquiera de sus
+     * respuestas es el sueldo de otra persona, acá el peor caso posible es que
+     * alguien lea el suyo.
+     */
+    public function miNomina(Request $request): JsonResponse
+    {
+        $periodo = $this->resolverPeriodo($request);
+        $detalle = $this->nomina->detalle($request->user()->id, $periodo);
+
+        if ($detalle === null) {
+            return response()->json([
+                'message' => 'No hay una compensación registrada a tu nombre para el período solicitado. '
+                    .'Comunícate con Talento Humano si crees que es un error.',
+            ], 404);
+        }
+
+        return response()->json([
+            'data' => $detalle,
+            'meta' => [
+                'periodo' => $periodo,
+                // Solo etiquetas de mes: no revelan datos de otros colaboradores.
+                'periodos' => $this->nomina->periodosDisponibles(),
+                'supuestos' => $this->nomina->supuestos(),
+            ],
+        ]);
+    }
+
     /** Assumptions and disclaimers, standalone. */
     public function supuestos(): JsonResponse
     {
