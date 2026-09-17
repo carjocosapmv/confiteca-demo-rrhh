@@ -28,6 +28,7 @@ import InduccionFacilitador from "@/pages/induccion/InduccionFacilitador";
 import InduccionTH from "@/pages/induccion/InduccionTH";
 import DescriptivosPage from "@/pages/descriptivos/DescriptivosPage";
 import RotacionDashboard from "@/pages/rotacion/RotacionDashboard";
+import NominaPage from "@/pages/nomina/NominaPage";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -83,6 +84,7 @@ function ProtectedRoutes() {
           <Route path="/induccion/th" element={<ProtectedModule moduleKey="induccion"><InduccionTH /></ProtectedModule>} />
           <Route path="/descriptivos" element={<ProtectedModule moduleKey="vacantes"><DescriptivosPage /></ProtectedModule>} />
           <Route path="/rotacion" element={<ProtectedModule moduleKey="rotacion"><RotacionDashboard /></ProtectedModule>} />
+          <Route path="/nomina" element={<ProtectedModule moduleKey="nomina"><NominaPage /></ProtectedModule>} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

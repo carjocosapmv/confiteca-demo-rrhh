@@ -1,7 +1,7 @@
 import {
   LayoutDashboard, BarChart3, ShieldCheck, LogOut,
   CalendarDays, Plus, FileText, Bell, Settings, KeyRound,
-  Users2, ClipboardCheck, UserPlus, Play, GraduationCap, UserCheck, Building2, TrendingDown
+  Users2, ClipboardCheck, UserPlus, Play, GraduationCap, UserCheck, Building2, TrendingDown, Calculator
 } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';
 import { useLocation } from 'react-router-dom';
@@ -44,6 +44,13 @@ const vacacionesAdminItems: MenuItem[] = [
 
 const analiticaItems: MenuItem[] = [
   { title: 'Rotación', url: '/rotacion', icon: TrendingDown, moduleKey: 'rotacion' },
+];
+
+// Grupo propio y no dentro de Talento: expone salarios individuales, así que se
+// separa visualmente del resto. El moduleKey `nomina` solo está habilitado para
+// admin/superadmin, por lo que el grupo desaparece para los demás roles.
+const nominaItems: MenuItem[] = [
+  { title: 'Nómina', url: '/nomina', icon: Calculator, moduleKey: 'nomina' },
 ];
 
 const talentoItems: MenuItem[] = [
@@ -142,6 +149,7 @@ export function AppSidebar() {
         {(canView('vacaciones')) && <MenuGroup label="Ausencias Admin" items={vacacionesAdminItems} />}
         <MenuGroup label="Analítica" items={analiticaItems} />
         <MenuGroup label="Talento" items={talentoItems} />
+        <MenuGroup label="Nómina" items={nominaItems} />
         <MenuGroup label="Administración" items={adminItems} />
       </SidebarContent>
       <div className="mt-auto p-4 border-t border-sidebar-border">

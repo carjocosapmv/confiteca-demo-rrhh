@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AdminUserController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BusinessUnitController;
 use App\Http\Controllers\Api\LeaveRequestController;
+use App\Http\Controllers\Api\NominaController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\MedicalLeaveBalanceController;
 use App\Http\Controllers\Api\DescriptivoCargoController;
@@ -119,6 +120,19 @@ Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
         Route::get('/colaboradores', [RotacionController::class, 'colaboradores']);
         Route::get('/riesgo', [RotacionController::class, 'riesgo']);
         Route::get('/dimension/{dimension}', [RotacionController::class, 'dimension']);
+    });
+
+    // Nómina — calculadora de estimados (solo lectura).
+    //
+    // Unlike the other modules, this one enforces the module permission on the
+    // SERVER too: these endpoints expose individual salaries, so frontend-only
+    // gating would leave the data one guessed URL away. `nomina` is granted to
+    // admin/superadmin only (see RolePermissionSeeder).
+    Route::prefix('nomina')->middleware('permission:nomina')->group(function () {
+        Route::get('/dashboard', [NominaController::class, 'dashboard']);
+        Route::get('/colaboradores', [NominaController::class, 'colaboradores']);
+        Route::get('/supuestos', [NominaController::class, 'supuestos']);
+        Route::get('/colaboradores/{userId}', [NominaController::class, 'detalle']);
     });
 
     // Vacation endpoints
