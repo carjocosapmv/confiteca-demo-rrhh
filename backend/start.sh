@@ -16,6 +16,7 @@ if [ -f .env ]; then
     done < .env
 fi
 
+: "${APP_KEY:=$APP_KEY_EXISTING}"
 : "${APP_NAME:=Confiteca}"
 : "${APP_URL:=http://localhost:8000}"
 : "${DB_CONNECTION:=sqlite}"
@@ -27,7 +28,7 @@ cat > .env << EOF
 APP_ENV=production
 APP_DEBUG=false
 APP_NAME="${APP_NAME}"
-APP_KEY=${APP_KEY_EXISTING}
+APP_KEY=${APP_KEY}
 APP_URL=${APP_URL}
 
 DB_CONNECTION=${DB_CONNECTION}
@@ -46,7 +47,7 @@ SANCTUM_STATEFUL_DOMAINS=${SANCTUM_STATEFUL_DOMAINS}
 CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS}
 EOF
 
-if [ -z "$APP_KEY_EXISTING" ]; then
+if [ -z "$APP_KEY" ]; then
     php artisan key:generate --force
 fi
 
