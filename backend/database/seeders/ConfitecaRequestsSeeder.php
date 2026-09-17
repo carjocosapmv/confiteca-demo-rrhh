@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\EmployeeRequest;
 use App\Models\LeaveRequest;
 use App\Models\Notification;
 use App\Models\User;
@@ -26,7 +27,7 @@ class ConfitecaRequestsSeeder extends Seeder
         $th = User::where('email', 'th@confiteca.com')->first();
 
         if (! $colaborador || ! $vendedor || ! $th) {
-            $this->command->error('Cuentas demo no encontradas. Ejecutá ConfitecaWorkforceSeeder primero.');
+            $this->command->error('Cuentas demo no encontradas. Ejecuta ConfitecaWorkforceSeeder primero.');
 
             return;
         }
@@ -195,6 +196,43 @@ class ConfitecaRequestsSeeder extends Seeder
             VacancyRequest::firstOrCreate(
                 ['user_id' => $req['user_id'], 'fecha_requerimiento' => $req['fecha_requerimiento']],
                 $req
+            );
+        }
+
+        // ── Solicitudes genéricas del personal, una por estado ──
+        $genericas = [
+            [
+                'user_id' => $vendedor->id,
+                'tipo' => EmployeeRequest::TIPO_NOMINA,
+                'descripcion' => 'En el período anterior no aparece la comisión por cobranza de la ruta sur. '
+                    .'Adjunté los cobros en el sistema, pero el estimado no los refleja.',
+                'estado' => EmployeeRequest::ESTADO_PENDIENTE,
+            ],
+            [
+                'user_id' => $colaborador->id,
+                'tipo' => EmployeeRequest::TIPO_CERTIFICADO,
+                'descripcion' => 'Necesito un certificado laboral con detalle de ingresos para un trámite bancario.',
+                'estado' => EmployeeRequest::ESTADO_APROBADO,
+                'respuesta_rrhh' => 'Certificado emitido. Puedes retirarlo en Talento Humano a partir de mañana.',
+                'resuelto_por' => $th->id,
+                'resuelto_at' => $hoy->copy()->subDays(3),
+            ],
+            [
+                'user_id' => $colaborador->id,
+                'tipo' => EmployeeRequest::TIPO_OTRO,
+                'descripcion' => 'Solicito cambio de horario de almuerzo de forma permanente a partir del próximo mes.',
+                'estado' => EmployeeRequest::ESTADO_RECHAZADO,
+                'respuesta_rrhh' => 'La cobertura del turno no permite el cambio permanente. '
+                    .'Se puede revisar un ajuste temporal con tu jefe inmediato.',
+                'resuelto_por' => $th->id,
+                'resuelto_at' => $hoy->copy()->subDays(8),
+            ],
+        ];
+
+        foreach ($genericas as $solicitud) {
+            EmployeeRequest::firstOrCreate(
+                ['user_id' => $solicitud['user_id'], 'descripcion' => $solicitud['descripcion']],
+                $solicitud
             );
         }
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AdminUserController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BusinessUnitController;
 use App\Http\Controllers\Api\LeaveRequestController;
+use App\Http\Controllers\Api\NominaController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\MedicalLeaveBalanceController;
 use App\Http\Controllers\Api\DescriptivoCargoController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Api\PuestoController;
 use App\Http\Controllers\Api\RemoteWorkBalanceController;
 use App\Http\Controllers\Api\RolePermissionController;
 use App\Http\Controllers\Api\RotacionController;
+use App\Http\Controllers\Api\SolicitudColaboradorController;
 use App\Http\Controllers\Api\VacationBalanceController;
 use App\Http\Controllers\Api\PermisoVacacionController;
 use App\Http\Controllers\Api\RequisicionPersonalController;
@@ -119,6 +121,34 @@ Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
         Route::get('/colaboradores', [RotacionController::class, 'colaboradores']);
         Route::get('/riesgo', [RotacionController::class, 'riesgo']);
         Route::get('/dimension/{dimension}', [RotacionController::class, 'dimension']);
+    });
+
+    // Autoservicio del colaborador.
+    //
+    // Fuera de `permission:nomina` a propósito: estas rutas no reciben a quién
+    // consultar, lo derivan de la sesión. El módulo `nomina` protege los datos
+    // AJENOS; el propio desglose no es un privilegio de módulo.
+    Route::get('/nomina/mi-nomina', [NominaController::class, 'miNomina']);
+
+    // Solicitudes genéricas del personal hacia Talento Humano.
+    Route::get('/solicitudes', [SolicitudColaboradorController::class, 'index']);
+    Route::post('/solicitudes', [SolicitudColaboradorController::class, 'store']);
+    Route::get('/solicitudes/todas', [SolicitudColaboradorController::class, 'todas']);
+    Route::get('/solicitudes/{employee_request}', [SolicitudColaboradorController::class, 'show']);
+    Route::post('/solicitudes/{employee_request}/aprobar', [SolicitudColaboradorController::class, 'aprobar']);
+    Route::post('/solicitudes/{employee_request}/rechazar', [SolicitudColaboradorController::class, 'rechazar']);
+
+    // Nómina — calculadora de estimados (solo lectura).
+    //
+    // Unlike the other modules, this one enforces the module permission on the
+    // SERVER too: these endpoints expose individual salaries, so frontend-only
+    // gating would leave the data one guessed URL away. `nomina` is granted to
+    // admin/superadmin only (see RolePermissionSeeder).
+    Route::prefix('nomina')->middleware('permission:nomina')->group(function () {
+        Route::get('/dashboard', [NominaController::class, 'dashboard']);
+        Route::get('/colaboradores', [NominaController::class, 'colaboradores']);
+        Route::get('/supuestos', [NominaController::class, 'supuestos']);
+        Route::get('/colaboradores/{userId}', [NominaController::class, 'detalle']);
     });
 
     // Vacation endpoints
