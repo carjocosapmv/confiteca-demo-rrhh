@@ -46,7 +46,7 @@ export function varianteEstado(estado: SolicitudEstado | string): 'outline' | 'd
 /**
  * Una solicitud solo admite acciones mientras está pendiente.
  *
- * Espeja el guard del servidor (EmployeeRequest::resolver). Acá evita ofrecer un
+ * Espeja el guard del servidor (EmployeeRequest::resolver). Aquí evita ofrecer un
  * botón que terminaría en un 409; la garantía real sigue estando en el backend.
  */
 export function admiteResolucion(estado: SolicitudEstado | string): boolean {
