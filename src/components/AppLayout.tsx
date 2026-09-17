@@ -8,6 +8,8 @@ import { useQuery } from '@tanstack/react-query';
 import { get } from '@/lib/api-client';
 import { useAuth } from '@/contexts/AuthContext';
 import { TourProvider } from '@/contexts/TourContext';
+import { HelpMenu } from '@/components/tour/HelpMenu';
+import { FirstRunTourPrompt } from '@/components/tour/FirstRunTourPrompt';
 
 export default function AppLayout() {
   const navigate = useNavigate();
@@ -37,25 +39,29 @@ export default function AppLayout() {
                 data-tour="chrome:sidebar-trigger"
                 className="text-muted-foreground hover:text-foreground"
               />
-              <Button
-                data-tour="chrome:notifications"
-                variant="ghost"
-                size="icon"
-                className="relative"
-                onClick={() => navigate('/vacaciones/notificaciones')}
-              >
-                <Bell className="h-5 w-5" />
-                {unreadCount > 0 && (
-                  <Badge className="absolute -top-1 -right-1 h-4 min-w-4 px-1 text-[9px] bg-primary text-primary-foreground rounded-full">
-                    {unreadCount > 99 ? '99+' : unreadCount}
-                  </Badge>
-                )}
-              </Button>
+              <div className="flex items-center gap-1">
+                <Button
+                  data-tour="chrome:notifications"
+                  variant="ghost"
+                  size="icon"
+                  className="relative"
+                  onClick={() => navigate('/vacaciones/notificaciones')}
+                >
+                  <Bell className="h-5 w-5" />
+                  {unreadCount > 0 && (
+                    <Badge className="absolute -top-1 -right-1 h-4 min-w-4 px-1 text-[9px] bg-primary text-primary-foreground rounded-full">
+                      {unreadCount > 99 ? '99+' : unreadCount}
+                    </Badge>
+                  )}
+                </Button>
+                <HelpMenu />
+              </div>
             </header>
             <main className="flex-1 p-6 overflow-auto">
               <Outlet />
             </main>
           </div>
+          <FirstRunTourPrompt />
         </div>
       </TourProvider>
     </SidebarProvider>

@@ -1,6 +1,7 @@
 import { LucideIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { statAnchor } from '@/lib/tour/anchors';
 
 export type StatTone = 'default' | 'positive' | 'warning' | 'danger';
 
@@ -11,6 +12,8 @@ interface StatCardProps {
   icon?: LucideIcon;
   tone?: StatTone;
   className?: string;
+  /** Opts the card into guided tours as `stat:{tourId}`. */
+  tourId?: string;
 }
 
 const toneStyles: Record<StatTone, string> = {
@@ -20,9 +23,9 @@ const toneStyles: Record<StatTone, string> = {
   danger: 'text-red-600 dark:text-red-400',
 };
 
-export function StatCard({ label, value, hint, icon: Icon, tone = 'default', className }: StatCardProps) {
+export function StatCard({ label, value, hint, icon: Icon, tone = 'default', className, tourId }: StatCardProps) {
   return (
-    <Card className={cn('overflow-hidden', className)}>
+    <Card data-tour={statAnchor(tourId)} className={cn('overflow-hidden', className)}>
       <CardContent className="flex items-start justify-between gap-3 p-4">
         <div className="min-w-0 space-y-1">
           <p className="truncate text-xs font-medium uppercase tracking-wide text-muted-foreground">

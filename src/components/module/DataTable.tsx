@@ -8,6 +8,7 @@ import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
+import { tableAnchor } from '@/lib/tour/anchors';
 
 export interface DataTableColumn<T> {
   /** Stable key, also used as the sort key when `sortable` */
@@ -43,6 +44,8 @@ interface DataTableProps<T> {
   pageSize?: number;
   emptyMessage?: string;
   toolbarExtra?: ReactNode;
+  /** Opts the table into guided tours as `table:{tourId}` and `table:{tourId}:toolbar`. */
+  tourId?: string;
 }
 
 const ALL = '__all__';
@@ -65,6 +68,7 @@ export function DataTable<T>({
   pageSize = 15,
   emptyMessage = 'Sin resultados',
   toolbarExtra,
+  tourId,
 }: DataTableProps<T>) {
   const [search, setSearch] = useState('');
   const [selected, setSelected] = useState<Record<string, string>>({});
@@ -124,7 +128,7 @@ export function DataTable<T>({
   return (
     <div className="space-y-3">
       {(searchAccessor || filters.length > 0 || toolbarExtra) && (
-        <div className="flex flex-wrap items-center gap-2">
+        <div data-tour={tableAnchor(tourId, 'toolbar')} className="flex flex-wrap items-center gap-2">
           {searchAccessor ? (
             <div className="relative min-w-[200px] flex-1 sm:max-w-xs">
               <Search className="absolute left-2.5 top-2.5 size-4 text-muted-foreground" />
@@ -162,7 +166,7 @@ export function DataTable<T>({
         </div>
       )}
 
-      <div className="rounded-md border">
+      <div data-tour={tableAnchor(tourId, 'root')} className="rounded-md border">
         <Table>
           <TableHeader>
             <TableRow>

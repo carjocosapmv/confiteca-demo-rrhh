@@ -20,6 +20,8 @@ interface TourContextValue {
   stopTour: () => void;
   isRunning: boolean;
   hasSeen: (tourId: string) => boolean;
+  /** Marks a tour as seen without running it (e.g. dismissing the first-run prompt). */
+  markSeen: (tourId: string) => void;
   resetAll: () => void;
 }
 
@@ -148,13 +150,16 @@ export function TourProvider({ children }: { children: React.ReactNode }) {
   );
 
   const hasSeen = useCallback((tourId: string) => hasSeenTour(userId, tourId), [userId]);
+  const markSeen = useCallback((tourId: string) => markTourSeen(userId, tourId), [userId]);
   const resetAll = useCallback(() => resetAllTours(userId), [userId]);
 
   // Never leave an overlay behind on unmount (logout, route teardown).
   useEffect(() => () => driverRef.current?.destroy(), []);
 
-  // TEMPORARY (PR1): manual trigger for QA until the Help menu lands in PR2.
-  // Usage in the browser console: __tour.start('overview')
+  // Dev-only console shortcut. The Help menu is the user-facing entry point;
+  // this stays because it is the fastest way to replay one specific tour while
+  // working on its content. Stripped from production builds by `import.meta.env.DEV`.
+  // Usage in the browser console: __tour.start('rotacion')
   useEffect(() => {
     if (!import.meta.env.DEV) return;
     (window as unknown as Record<string, unknown>).__tour = {
@@ -168,8 +173,8 @@ export function TourProvider({ children }: { children: React.ReactNode }) {
   }, [startTour, stopTour, resetAll]);
 
   const value = useMemo<TourContextValue>(
-    () => ({ startTour, stopTour, isRunning, hasSeen, resetAll }),
-    [startTour, stopTour, isRunning, hasSeen, resetAll],
+    () => ({ startTour, stopTour, isRunning, hasSeen, markSeen, resetAll }),
+    [startTour, stopTour, isRunning, hasSeen, markSeen, resetAll],
   );
 
   return <TourContext.Provider value={value}>{children}</TourContext.Provider>;
