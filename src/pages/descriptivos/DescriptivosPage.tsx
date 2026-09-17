@@ -298,7 +298,7 @@ export default function DescriptivosPage() {
                               const acts = [...fn.actividades];
                               acts[ai] = e.target.value;
                               updFuncion(fi, { actividades: acts });
-                            }} placeholder="Describí la actividad..." className="flex-1" />
+                            }} placeholder="Describe la actividad..." className="flex-1" />
                             {fn.actividades.length > 1 && (
                               <Button variant="ghost" size="sm" className="h-7 w-7 text-red-400" onClick={() => {
                                 const acts = fn.actividades.filter((_, j) => j !== ai);

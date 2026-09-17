@@ -181,7 +181,7 @@ export default function OnboardingPage() {
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">Inducción y Onboarding</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Completá los capítulos de inducción para familiarizarte con la empresa.
+          Completa los capítulos de inducción para familiarizarte con la empresa.
         </p>
       </div>
 

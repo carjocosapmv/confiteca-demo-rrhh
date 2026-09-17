@@ -15,7 +15,7 @@ export const rotacionSection: GuideSection = {
       title: 'Analítica',
       summary: 'El grupo que reúne los tableros de lectura y análisis de la plantilla.',
       details: [
-        'Analítica no es un módulo de carga: acá no se ingresan datos, se interpretan los que el resto del portal ya generó.',
+        'Analítica no es un módulo de carga: aquí no se ingresan datos, se interpretan los que el resto del portal ya generó.',
         'Su público son las jefaturas y el equipo de Talento Humano, que lo usan para tomar decisiones sobre la plantilla con evidencia en lugar de percepción.',
       ],
       anchor: 'navgroup:Analítica',

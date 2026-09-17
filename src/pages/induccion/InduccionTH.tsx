@@ -224,7 +224,7 @@ export default function InduccionTH() {
                   </div>
                 ))}
                 {newActivities.length === 0 && (
-                  <p className="text-sm text-muted-foreground text-center py-4">Agregá al menos una actividad al programa.</p>
+                  <p className="text-sm text-muted-foreground text-center py-4">Agrega al menos una actividad al programa.</p>
                 )}
 
                 <div className="flex justify-end gap-2 pt-4">

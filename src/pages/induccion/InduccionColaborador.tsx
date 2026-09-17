@@ -130,8 +130,8 @@ export default function InduccionColaborador() {
   if (!program) {
     return (
       <div className="space-y-6">
-        <div><h1 className="text-2xl font-bold">Mi Programa de Inducción</h1><p className="text-muted-foreground">No tenés un programa de inducción asignado.</p></div>
-        <Card><CardContent className="py-8 text-center text-muted-foreground">Comunicate con Talento Humano para que te asignen tu programa.</CardContent></Card>
+        <div><h1 className="text-2xl font-bold">Mi Programa de Inducción</h1><p className="text-muted-foreground">No tienes un programa de inducción asignado.</p></div>
+        <Card><CardContent className="py-8 text-center text-muted-foreground">Comunícate con Talento Humano para que te asignen tu programa.</CardContent></Card>
       </div>
     );
   }
@@ -237,7 +237,7 @@ export default function InduccionColaborador() {
           <CardContent className="py-6 text-center space-y-4">
             <Award className="h-12 w-12 text-primary mx-auto" />
             <h3 className="text-lg font-semibold">¡Inducción completada!</h3>
-            <p className="text-sm text-muted-foreground">Generá tu certificado de inducción</p>
+            <p className="text-sm text-muted-foreground">Genera tu certificado de inducción</p>
             <Button onClick={() => certificadoMutation.mutate()} disabled={certificadoMutation.isPending}>
               {certificadoMutation.isPending ? <Loader2 className="h-4 w-4 animate-spin mr-1" /> : <FileCheck className="h-4 w-4 mr-1" />}
               Generar Certificado

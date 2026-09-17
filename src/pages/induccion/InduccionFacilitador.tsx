@@ -82,7 +82,7 @@ export default function InduccionFacilitador() {
   if (!data || data.length === 0) {
     return (
       <div className="space-y-6">
-        <div><h1 className="text-2xl font-bold">Mis Colaboradores en Inducción</h1><p className="text-muted-foreground">No tenés colaboradores asignados como facilitador.</p></div>
+        <div><h1 className="text-2xl font-bold">Mis Colaboradores en Inducción</h1><p className="text-muted-foreground">No tienes colaboradores asignados como facilitador.</p></div>
         <Card><CardContent className="py-8 text-center text-muted-foreground">Cuando te asignen actividades de inducción, aparecerán aquí.</CardContent></Card>
       </div>
     );

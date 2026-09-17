@@ -337,7 +337,7 @@ export default function OnboardingRRHHPage() {
                 </CardHeader>
                 <CardContent>
                   {totalVids === 0 ? (
-                    <p className="text-sm text-muted-foreground italic">Sin videos. Agregá el primero.</p>
+                    <p className="text-sm text-muted-foreground italic">Sin videos. Agrega el primero.</p>
                   ) : (
                     <div className="space-y-1">
                       {ch.videos.map((v) => (

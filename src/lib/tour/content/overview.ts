@@ -54,7 +54,7 @@ export const overviewSection: GuideSection = {
       title: 'Analítica',
       summary: 'Indicadores de rotación para entender cómo evoluciona la plantilla.',
       details: [
-        'Analítica agrupa los tableros de lectura: no se cargan datos acá, se interpretan.',
+        'Analítica agrupa los tableros de lectura: no se cargan datos aquí, se interpretan.',
         'Hoy contiene Rotación, el análisis de salidas de personal. Está pensado para jefaturas y Talento Humano, que lo usan para anticipar riesgos de desvinculación.',
       ],
       anchor: 'navgroup:Analítica',
@@ -104,7 +104,7 @@ export const overviewSection: GuideSection = {
       id: 'ayuda',
       title: 'Ayuda y recorridos',
       summary:
-        'Desde acá puedes repetir este recorrido cuando quieras o lanzar el de una sección puntual.',
+        'Desde aquí puedes repetir este recorrido cuando quieras o lanzar el de una sección puntual.',
       details: [
         'El botón de ayuda abre el menú de recorridos guiados. Lista solo los recorridos de las secciones a las que tienes acceso, así que lo que ves ahí es exactamente lo que puedes usar.',
         'La opción "Reiniciar recorridos" borra la marca de visto de todos los recorridos: útil si quieres volver a verlos desde cero o si acompañas a un compañero que recién ingresa.',

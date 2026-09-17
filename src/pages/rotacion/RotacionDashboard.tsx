@@ -336,7 +336,7 @@ export default function RotacionDashboard() {
               <CardDescription>
                 Score por reglas explícitas y auditables: ausentismo, horas extra, desempeño,
                 percepción de jefatura, antigüedad sin ajuste salarial y rotación del equipo.
-                Hacé clic en una fila para ver el detalle.
+                Haz clic en una fila para ver el detalle.
               </CardDescription>
             </CardHeader>
           </Card>

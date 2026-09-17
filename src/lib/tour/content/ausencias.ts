@@ -27,7 +27,7 @@ export const ausenciasSection: GuideSection = {
       title: 'Nueva Solicitud',
       summary: 'El formulario para pedir vacaciones o un permiso: eliges fechas, tipo y motivo.',
       details: [
-        'Acá se origina todo el circuito. Seleccionas el rango de fechas, el tipo de ausencia y el motivo; el sistema calcula los días hábiles involucrados y valida que tengas saldo suficiente.',
+        'Aquí se origina todo el circuito. Seleccionas el rango de fechas, el tipo de ausencia y el motivo; el sistema calcula los días hábiles involucrados y valida que tengas saldo suficiente.',
         'Al enviarla, la solicitud queda en estado pendiente y se notifica automáticamente a quien debe aprobarla. No hace falta avisar por correo.',
       ],
       anchor: 'nav:/vacaciones/nueva',
@@ -54,7 +54,7 @@ export const ausenciasSection: GuideSection = {
       summary: 'La vista mensual de ausencias del equipo, para no dejar un área sin cobertura.',
       details: [
         'Muestra en un calendario quién está ausente cada día, cruzando las solicitudes aprobadas de todo el equipo.',
-        'Sirve para planificar: antes de aprobar unas vacaciones conviene mirar acá si ya hay otras personas del área fuera en esas mismas fechas.',
+        'Sirve para planificar: antes de aprobar unas vacaciones conviene mirar aquí si ya hay otras personas del área fuera en esas mismas fechas.',
       ],
       anchor: 'nav:/vacaciones/calendario',
       route: '/vacaciones/calendario',

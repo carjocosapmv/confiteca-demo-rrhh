@@ -16,7 +16,7 @@ export const administracionSection: GuideSection = {
       summary: 'El alta, baja y asignación de rol de las personas que acceden al portal.',
       details: [
         'Lista las cuentas habilitadas y permite crear nuevas, desactivar las de quienes dejaron la empresa y cambiar el rol asignado.',
-        'El rol es lo que determina qué ve cada persona. Cambiarlo acá tiene efecto inmediato sobre el menú y los permisos de esa cuenta.',
+        'El rol es lo que determina qué ve cada persona. Cambiarlo aquí tiene efecto inmediato sobre el menú y los permisos de esa cuenta.',
       ],
       anchor: 'nav:/admin/usuarios',
       route: '/admin/usuarios',
@@ -28,7 +28,7 @@ export const administracionSection: GuideSection = {
       title: 'Permisos',
       summary: 'La matriz que define, por rol y por módulo, quién puede ver y quién puede editar.',
       details: [
-        'Es una grilla de roles por módulos con dos casilleros por celda: ver y editar. Lo que se configura acá es exactamente lo que el portal aplica, tanto en el menú lateral como en cada pantalla.',
+        'Es una grilla de roles por módulos con dos casilleros por celda: ver y editar. Lo que se configura aquí es exactamente lo que el portal aplica, tanto en el menú lateral como en cada pantalla.',
         'Los permisos son por rol, no por persona: al modificar una fila, el cambio alcanza a todos los usuarios que tengan ese rol. Quitar el permiso de ver también quita el de editar, porque no se puede modificar lo que no se puede abrir.',
       ],
       anchor: 'nav:/admin/permisos',

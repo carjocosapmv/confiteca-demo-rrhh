@@ -15,7 +15,7 @@ export const talentoSection: GuideSection = {
       title: 'Vacantes',
       summary: 'Las solicitudes de personal: qué puesto se necesita, por qué y en qué estado está.',
       details: [
-        'Una vacante nace cuando un área necesita cubrir un puesto, sea por reemplazo o por creación. Desde acá se solicita formalmente y queda registro del pedido, su justificación y su aprobación.',
+        'Una vacante nace cuando un área necesita cubrir un puesto, sea por reemplazo o por creación. Desde aquí se solicita formalmente y queda registro del pedido, su justificación y su aprobación.',
         'Reemplaza el pedido informal por correo: el área solicitante carga la necesidad, Talento Humano la revisa y el estado de cada búsqueda queda visible para ambos.',
       ],
       anchor: 'nav:/vacantes',
@@ -93,7 +93,7 @@ export const talentoSection: GuideSection = {
       title: 'Gestión Videos',
       summary: 'La administración del contenido audiovisual y el avance de cada colaborador.',
       details: [
-        'Desde acá Talento Humano publica y ordena los videos de la ruta de inducción, y define cuáles son obligatorios.',
+        'Desde aquí Talento Humano publica y ordena los videos de la ruta de inducción, y define cuáles son obligatorios.',
         'Muestra además el avance por colaborador, que es la evidencia que suele pedirse en auditorías de capacitación.',
       ],
       anchor: 'nav:/onboarding/rrhh',
