@@ -18,6 +18,16 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // API-only backend: guests must never be redirected to a `login` route.
+        // Laravel defaults to `redirectGuestsTo(fn () => route('login'))`, but
+        // routes/web.php is intentionally empty, so any unauthenticated request
+        // that did not send `Accept: application/json` blew up with a 500
+        // RouteNotFoundException inside Authenticate::redirectTo() -- before an
+        // AuthenticationException was ever thrown, which is why the render
+        // callback below never fired. Returning null keeps the exception as an
+        // AuthenticationException and yields a clean JSON 401 for every client.
+        $middleware->redirectGuestsTo(null);
+
         $middleware->api(prepend: [
             EnsureFrontendRequestsAreStateful::class,
             SecurityHeaders::class,
