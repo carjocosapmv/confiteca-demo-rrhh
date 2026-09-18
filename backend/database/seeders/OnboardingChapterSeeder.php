@@ -13,18 +13,18 @@ class OnboardingChapterSeeder extends Seeder
         $chapters = [
             [
                 'titulo' => 'Bienvenida y Cultura Organizacional',
-                'descripcion' => 'Conocé nuestra historia, misión y los valores que nos guían.',
+                'descripcion' => 'Conoce nuestra historia, misión y los valores que nos guían.',
                 'icono' => 'Heart',
                 'orden' => 1,
                 'videos' => [
                     ['titulo' => 'Video de bienvenida del CEO', 'descripcion' => 'Mensaje de bienvenida y visión estratégica de la dirección.', 'duracion_minutos' => 5],
-                    ['titulo' => 'Misión, Visión y Valores', 'descripcion' => 'Conocé el propósito de la organización y los principios que nos definen.', 'duracion_minutos' => 8],
+                    ['titulo' => 'Misión, Visión y Valores', 'descripcion' => 'Conoce el propósito de la organización y los principios que nos definen.', 'duracion_minutos' => 8],
                     ['titulo' => 'Cultura organizacional y código de conducta', 'descripcion' => 'Cómo trabajamos, qué esperamos y cómo nos relacionamos.', 'duracion_minutos' => 10],
                 ],
             ],
             [
                 'titulo' => 'Historia y Estructura',
-                'descripcion' => 'Recorré nuestra trayectoria y conocé cómo estamos organizados.',
+                'descripcion' => 'Recorre nuestra trayectoria y conoce cómo estamos organizados.',
                 'icono' => 'Building2',
                 'orden' => 2,
                 'videos' => [
@@ -34,7 +34,7 @@ class OnboardingChapterSeeder extends Seeder
             ],
             [
                 'titulo' => 'Políticas de Recursos Humanos',
-                'descripcion' => 'Todo lo que necesitás saber sobre normas, beneficios y procesos de RRHH.',
+                'descripcion' => 'Todo lo que necesitas saber sobre normas, beneficios y procesos de RRHH.',
                 'icono' => 'FileText',
                 'orden' => 3,
                 'videos' => [
@@ -87,7 +87,7 @@ class OnboardingChapterSeeder extends Seeder
             ],
             [
                 'titulo' => 'Beneficios y Calidad de Vida',
-                'descripcion' => 'Conocé todos los beneficios que tenés como colaborador.',
+                'descripcion' => 'Conoce todos los beneficios que tienes como colaborador.',
                 'icono' => 'Gift',
                 'orden' => 8,
                 'videos' => [

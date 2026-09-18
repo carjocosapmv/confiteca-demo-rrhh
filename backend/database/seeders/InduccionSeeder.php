@@ -18,7 +18,7 @@ class InduccionSeeder extends Seeder
         $ana = User::where('email', 'jefe.ventas@confiteca.com')->first();
 
         if (!$maria || !$pedro) {
-            $this->command->error('Usuarios demo no encontrados. Ejecutá ConfitecaWorkforceSeeder primero.');
+            $this->command->error('Usuarios demo no encontrados. Ejecuta ConfitecaWorkforceSeeder primero.');
             return;
         }
 

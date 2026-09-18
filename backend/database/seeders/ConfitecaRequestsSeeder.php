@@ -255,7 +255,7 @@ class ConfitecaRequestsSeeder extends Seeder
             [
                 'user_id' => $colaborador->id,
                 'title' => 'Tu programa de inducción avanza',
-                'message' => 'Tenés actividades pendientes en tu programa de inducción.',
+                'message' => 'Tienes actividades pendientes en tu programa de inducción.',
                 'type' => 'info',
                 'reference_type' => 'induction',
             ],
